@@ -75,14 +75,13 @@ public class MensajeDAO {
         try {
             connection = Conexion.getConnection();
 
-            String query="update mensajes set mensaje= ?, autor_mensaje=? where id_mensaje = ?";
+            String query="update mensajes set mensaje= ? where id_mensaje = ?";
             ps=connection.prepareStatement(query);
             ps.setString(1,mensaje.getMensaje());
-            ps.setString(2,mensaje.getAutorMensaje());
-            ps.setInt(3,mensaje.getIdMensaje());
+            ps.setInt(2,mensaje.getIdMensaje());
             int cant = ps.executeUpdate();
             if (cant>0){
-                System.out.println("se pudo borrar correctamente");
+                System.out.println("se pudo editar correctamente");
             }else{
                 System.out.println("No se encontro el registro");
             }
